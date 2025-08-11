@@ -103,7 +103,7 @@ const {count, dbHost, dbPass, dbUser, reverse} = parseArgs({
     dbHost: {
       short: "h",
       type: "string",
-      default: "localhost:5432",
+      default: "localhost",
     },
     dbUser: {
       short: "u",
