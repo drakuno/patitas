@@ -93,12 +93,17 @@ async function getMigrationFilenamesInDir(dirPath: string)
   return fileNames;
 }
 
-const {count, dbHost, dbPass, dbUser, reverse} = parseArgs({
+const {count, dbDb, dbHost, dbPass, dbUser, reverse} = parseArgs({
   options: {
     count: {
       short: "c",
       type: "string",
       default: "0",
+    },
+    dbDb: {
+      short: "d",
+      type: "string",
+      default: "patitas",
     },
     dbHost: {
       short: "h",
@@ -126,6 +131,7 @@ const pg = new Client({
   host: dbHost,
   user: dbUser,
   password: dbPass,
+  database: dbDb,
 });
 pg.connect().then(async () =>
 {
