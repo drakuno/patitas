@@ -8,5 +8,5 @@ RUN deno install
 
 EXPOSE 3000
 
-CMD ["deno", "run", "dev"]
+CMD ["deno", "run", "--env-file", "dev"]
 
