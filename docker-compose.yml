@@ -21,4 +21,11 @@ services:
       - POSTGRES_HOST=postgres
     depends_on:
       - postgres
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: rebuild
+          path: package.json
 
