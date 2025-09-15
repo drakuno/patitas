@@ -7,7 +7,7 @@ COPY deno.lock ./
 
 RUN deno install
 
-COPY * ./
+COPY . .
 
 EXPOSE 3000
 
