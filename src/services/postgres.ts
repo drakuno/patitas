@@ -1,19 +1,12 @@
 import {Client} from "pg";
 
-console.log(Deno.env);
-console.log({
-  host: Deno.env.get("PGHOST"),
-  port: Deno.env.get("PGPORT"),
-  user: Deno.env.get("PGUSER"),
-  password: Deno.env.get("PGPASSWORD"),
-});
-
+console.log(process.env);
 export const pgdb = new Client({
-  host: Deno.env.get("PGHOST") ?? "postgres",
-  port: Deno.env.get("PGPORT") ?? "5432",
-  user: Deno.env.get("PGUSER") ?? "postgres",
-  password: Deno.env.get("PGPASSWORD") ?? "postgres",
-  database: Deno.env.get("PGDATABASE") ?? "patitas",
+  host: process.env.PGHOST ?? "postgres",
+  port: +(process.env.PGPORT ?? "5432"),
+  user: process.env.PGUSER ?? "postgres",
+  password: process.env.PGPASSWORD ?? "postgres",
+  database: process.env.PGDATABASE ?? "patitas",
 });
 
 export const whenReady = pgdb.connect().then(() => pgdb);

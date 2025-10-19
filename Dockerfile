@@ -1,15 +1,14 @@
-FROM denoland/deno:alpine-2.4.2
+FROM node:22-alpine3.21
 
 WORKDIR /app
 
 COPY *.json ./
-COPY deno.lock ./
 
-RUN deno install
+RUN npm i
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["deno", "run", "--env-file", "dev"]
+CMD ["npm", "run", "dev"]
 
